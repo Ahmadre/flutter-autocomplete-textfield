@@ -191,6 +191,16 @@ class AutoCompleteTextFieldState<T> extends State<AutoCompleteTextField> {
     });
   }
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
   void clear() {
     textField.controller.clear();
     updateOverlay();
