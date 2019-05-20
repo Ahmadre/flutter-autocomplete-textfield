@@ -200,7 +200,7 @@ class AutoCompleteTextFieldState<T> extends State<AutoCompleteTextField> {
   void dispose() {
     super.dispose();
   }
-
+  
   void clear() {
     textField.controller.clear();
     updateOverlay();
@@ -226,7 +226,7 @@ class AutoCompleteTextFieldState<T> extends State<AutoCompleteTextField> {
   void updateOverlay([String query]) {
     if (listSuggestionsEntry == null) {
       final Size textFieldSize = (context.findRenderObject() as RenderBox).size;
-      final width = textFieldSize.width;
+      final width = textFieldSize.width + 40;
       final height = textFieldSize.height;
       listSuggestionsEntry = new OverlayEntry(
         builder: (context) {
@@ -239,9 +239,12 @@ class AutoCompleteTextFieldState<T> extends State<AutoCompleteTextField> {
               child: new SizedBox(
                 width: width,
                 child: new Card(
-                  child: new Column(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(0.0),
+                  ),
+                  child: new Column(                    
                     children: filteredSuggestions.map((suggestion) {
-                      return new Row(
+                      return new Row(                        
                         children: [
                           new Expanded(
                             child: new InkWell(
